@@ -26,9 +26,9 @@ userRouter.post("/login", async (req, res) => {
   try {
     const user = await UserModel.findOne({ email }); //we are going to mongodb andd getteing details of particular email
     if (user) {
-      bcrypt.compare(pass, user.pass, (er, result) => {
+      bcrypt.compare(pass, user.pass, (err, result) => {
         if (result) {
-          let token = jwt.sign({ course: "BE" }, "banglore");
+          let token = jwt.sign({ email: user.email }, "chaina");
           res.json({ msg: "Loggedin", token });
         } else {
           res.json({ msg: "wrong credentials" });
