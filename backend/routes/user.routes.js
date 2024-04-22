@@ -2,6 +2,8 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../models/user.model");
+const { sendEmail } = require("../services/email");
+
 const userRouter = express.Router();
 
 userRouter.post("/register", (req, res) => {
